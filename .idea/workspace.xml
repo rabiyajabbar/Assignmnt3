@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6c5dc29-21d6-41c0-9789-1ede56989b06" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/python-docs-hello-world.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/python-docs-hello-world.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/my-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/my-form.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,8 +16,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/my-form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="39" column="11" lean-forward="true" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
+            <state relative-caret-position="226">
+              <caret line="31" column="8" lean-forward="true" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -37,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="122" column="44" selection-start-line="122" selection-start-column="44" selection-end-line="122" selection-end-column="44" />
+            <state relative-caret-position="20">
+              <caret line="94" column="20" lean-forward="true" selection-start-line="94" selection-start-column="20" selection-end-line="94" selection-end-column="20" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -49,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/city.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="2" column="27" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="27" />
+            <state>
+              <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -85,9 +79,9 @@
       <list>
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/templates/index.html" />
-        <option value="$PROJECT_DIR$/templates/my-form.html" />
         <option value="$PROJECT_DIR$/templates/city.html" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/templates/my-form.html" />
       </list>
     </option>
   </component>
@@ -190,7 +184,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2247191" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -237,6 +230,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/city.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -246,25 +246,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/my-form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="39" column="11" lean-forward="true" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
+        <state relative-caret-position="226">
+          <caret line="31" column="8" lean-forward="true" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="122" column="44" selection-start-line="122" selection-start-column="44" selection-end-line="122" selection-end-column="44" />
+        <state relative-caret-position="20">
+          <caret line="94" column="20" lean-forward="true" selection-start-line="94" selection-start-column="20" selection-end-line="94" selection-end-column="20" />
           <folding>
             <element signature="e#0#59#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/city.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="27" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="27" />
         </state>
       </provider>
     </entry>

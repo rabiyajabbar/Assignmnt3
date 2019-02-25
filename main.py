@@ -104,8 +104,8 @@ def csvload():
 
         return render_template("index.html", timedur=duration)
 
-@app.route('/quakeRangeRedis', methods=['GET'])
-def quakeRangeRedis():
+@app.route('/Redis', methods=['GET'])
+def Redis():
     if rd.exists(cacheName):
         print('Found Cache!')
         start_time = time.time()
@@ -143,12 +143,12 @@ def quakeRangeRedis():
     total_time = end_time - start_time
     return render_template('city.html', ci=results, time=total_time)
 
-@app.route('/quakerange', methods=['GET'])
-def quakerange():
+@app.route('/range', methods=['GET'])
+def range():
     # connect to DB2
     sql="select * from earthquake".encode('utf-8')
-    magn = float(request.args.get('mag'))
-    magn1 = float(request.args.get('mag1'))
+    magn = float(request.args.get('mag1'))
+    magn1 = float(request.args.get('mag2'))
 
     cnxn = pyodbc.connect('DRIVER=' + driver + ';SERVER=' + server
                             + ';PORT=1443;DATABASE=' + database
@@ -160,7 +160,7 @@ def quakerange():
 
     starttime = time.time()
     for i in range(0,1500):
-        random1 = round(random.uniform(float(magn),float(magn1)),3)
+        random1 = round(random.uniform(float(mag1),float(mag2)),3)
         hash = hashlib.sha224(sql).hexdigest()
         key = "sql_cache:" + hash
         if (rd.get(key)):
