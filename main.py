@@ -6,6 +6,7 @@ import redis
 import random
 import hashlib
 import pickle
+import urllib
 import pandas as pd
 
 
@@ -15,7 +16,7 @@ username = 'rabiyajabbar'
 password = 'Rabiya765'
 driver = '{ODBC Driver 13 for SQL Server}'
 app = Flask(__name__)
-cacheName = 'testQueryRes'
+CacheName = 'testQueryRes'
 rd = redis.StrictRedis(host='Quiz3Redis.redis.cache.windows.net', port=6380, db=0,
                            password='agREB5IB9Hth+CHJSOCCxD4wfnivpEuuZFE3nVqP0CQ=', ssl=True)
 # cnxn = pyodbc.connect('DRIVER=' + driver + ';SERVER=' + server
@@ -39,8 +40,8 @@ def my_form():
 @app.route('/search', methods=['GET'])
 def search():
     cnxn = pyodbc.connect('DRIVER=' + driver + ';SERVER=' + server
-                            + ';PORT=1443;DATABASE=' + database
-                            + ';UID=' + username + ';PWD=' + password)
+                          + ';PORT=1443;DATABASE=' + database
+                          + ';UID=' + username + ';PWD=' + password)
 
     cursor = cnxn.cursor()
     starttime = time.time()
@@ -52,7 +53,7 @@ def search():
     return render_template('index.html', ci=rows, timedur=duration)
 
 
-@app.route('/search1', methods=['POST'])
+@app.route('/searchran', methods=['POST'])
 def range1():
     cnxn = pyodbc.connect('DRIVER=' + driver + ';SERVER=' + server + ';PORT=1443;DATABASE=' + database
                           + ';UID=' + username + ';PWD=' + password)
@@ -72,7 +73,9 @@ def range1():
     print(rows)
     endtime = time.time()
     duration = endtime - starttime
+
     return render_template('index.html', ci=rows, timedur=duration)
+
 
 @app.route('/data', methods=['GET'])
 def csvload():
@@ -106,11 +109,11 @@ def csvload():
 
 @app.route('/Redis', methods=['GET'])
 def Redis():
-    if rd.exists(cacheName):
+    if rd.exists(CacheName):
         print('Found Cache!')
-        start_time = time.time()
-        results = pickle.loads(rd.get(cacheName))
-        end_time = time.time()
+        starttime = time.time()
+        results = pickle.loads(rd.get(CacheName))
+        endtime = time.time()
 
     else:
         print('Cache Not Found!')
@@ -119,9 +122,9 @@ def Redis():
                                 + ';UID=' + username + ';PWD=' + password)
         cursor = cnxn.cursor()
 
-        start_time = time.time()
+        starttime = time.time()
         cursor.execute("select * from quakes where MAG between 0.7 and 8")
-        end_time = time.time()
+        endtime = time.time()
 
 
         columns = [column[0] for column in cursor.description]
@@ -138,54 +141,52 @@ def Redis():
 
         #r.set( cacheName, results)
         #r.get('foo')
-        rd.set(cacheName, pickle.dumps(results))
+        rd.set(CacheName, pickle.dumps(results))
 
-    total_time = end_time - start_time
-    return render_template('city.html', ci=results, time=total_time)
+    totaltime = endtime - starttime
+    return render_template('output.html', ci=results, time=totaltime)
 
-@app.route('/range', methods=['GET'])
+@app.route('/redisrange', methods=['GET'])
 def range():
-    # connect to DB2
-    sql="select * from earthquake".encode('utf-8')
-    magn = float(request.args.get('mag1'))
-    magn1 = float(request.args.get('mag2'))
+    sql = "select * from quakes".encode('utf-8')
+    mag1 = (request.args.get('mag1'))
+    mag2 = (request.args.get('mag2'))
 
     cnxn = pyodbc.connect('DRIVER=' + driver + ';SERVER=' + server
-                            + ';PORT=1443;DATABASE=' + database
-                            + ';UID=' + username + ';PWD=' + password)
+                          + ';PORT=1443;DATABASE=' + database
+                          + ';UID=' + username + ';PWD=' + password)
 
     cursor = cnxn.cursor()
 
-
-
     starttime = time.time()
-    for i in range(0,1500):
-        random1 = round(random.uniform(float(mag1),float(mag2)),3)
+    for i in range(0, 1500):
+        random1 = round(random.uniform(float(mag1), float(mag2)), 3)
         hash = hashlib.sha224(sql).hexdigest()
         key = "sql_cache:" + hash
         if (rd.get(key)):
-            print ("This was return from redis")
+            print("This was return from redis")
         else:
-            cursor.execute("select * from earthquake where mag>'"+ str(random1) +"'")
+            cursor.execute("select * from earthquake where mag>'" + str(random1) + "'")
             data = cursor.fetchall()
 
-            rows1=[]
+            rows1 = []
             for x in data:
                 rows1.append(str(x))
-                rd.set(key,pickle.dumps(list(rows1)))
-        # Put data into cache for 1 hour
+                rd.set(key, pickle.dumps(list(rows1)))
+                # Put data into cache for 1 hour
                 rd.expire(key, 36)
-                print ("This is the cached data")
+                print("This is the cached data")
     endtime = time.time()
-        # Note that for security reasons we are preparing the statement first,
-        # then bind the form input as value to the statement to replace the
-        # parameter marker.
+    # Note that for security reasons we are preparing the statement first,
+    # then bind the form input as value to the statement to replace the
+    # parameter marker.
 
     duration = endtime - starttime
-    return render_template('city.html',ci=rows1, time=duration)
+    return render_template('output.html', ci=rows1, time=duration)
+
 
 def hello_world():
-  return 'Hello, World!\n This looks just amazing within 5 minutes'
+    return 'Hello, World!\n This looks just amazing within 5 minutes'
 
 if __name__ == '__main__':
-  app.run(debug=True)
+    app.run(debug=True)
