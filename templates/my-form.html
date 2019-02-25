@@ -1,13 +1,40 @@
-<form method="POST">
 
 	<center>
 		<br>
-	<header> <h1> Enter Your Name:<br> </h1>
-	<br>  
-	<h2> This page allows you to enter your name in any case and returns a string in capital case, with a welcome message </h2>
-	<br>
-    <input name="text">
-    <input type="submit">
-    <br>
-    
-</form>
+	<header> <h1> Rabiya Abdul Jabbar<br> </h1>
+		<h2> UTA ID:-1001583759 </h2>
+	</header>
+	</center>
+<form>
+
+
+<h3>Search for mag</h3>
+	<form action="/search" method="get">
+    Enter a magnitude<input type="text" name="mag" method="get" action="/search">
+    <input type="submit" value="Search">
+ 	</form>
+<h4>Search redis range</h4>
+	<form action="./redis" method="POST" enctype="multipart/form-data">
+	      <input type="text" value="" name="range1" placeholder="mag1">
+	      <input type="text" value="" name="range2" placeholder="mag2">
+	      <input type="submit" value="Search">
+	</form>
+
+<h4>Search mag range</h4>
+	<form action="./search1" method="POST" enctype="multipart/form-data">
+	      <input type="text" value="" name="mag1" placeholder="mag1">
+	      <input type="text" value="" name="mag2" placeholder="mag2">
+		  <input type="text" value="" name="Queries" placeholder="Queries">
+	      <input type="submit" value="Search">
+	</form>
+	<form action="/quakeRangeRedis" method="get">
+		(Redis)Range From: <input type="text" name="mag1" maxlength="200" width="60">
+		(Redis)Range To:<input type="text" name="mag2" maxlength="200" width="60">
+		<input type="submit" value="Search">
+	</form>
+<h5>Upload</h5>
+	<form action="./data" method="GET" enctype = "multipart/form-data">
+	Upload CSV:  <input type="file" name="myfile"><br>
+            <br>
+            <input type="submit" name="Submit"><br>
+	</form>
